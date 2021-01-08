@@ -51,20 +51,31 @@ function imprimirError(mensaje) {
 
 // COMIENZA ACA
 function hacerOperacion() {
-  if (operacion.value === 'sumar'){
-    total = parseFloat(input1.value) + parseFloat(input2.value);
-    imprimirResultado(total);
-  } else if(operacion.value === 'restar'){
-    total = parseFloat(input1.value) - parseFloat(input2.value);
-    imprimirResultado(total);
-  } else if(operacion.value === 'multiplicar'){
-    total = parseFloat(input1.value) * parseFloat(input2.value);
-    imprimirResultado(total);
-  } else if(operacion.value === 'dividir'){
-    total = parseFloat(input1.value) / parseFloat(input2.value);
-    imprimirResultado(total);
+  // Limpio posibles mensajes de error anteriores
+  mensaje = '';
+  imprimirError(mensaje);
+  if (input1.value === ''){
+    mensaje = 'ERROR; no insertaste el campo numero 1';
+    imprimirError(mensaje);
+  }else if (input2.value === ''){
+    mensaje = 'ERROR; no insertaste el campo numero 2';
+    imprimirError(mensaje);
+  }else{
+    if (operacion.value === 'sumar'){
+      total = parseFloat(input1.value) + parseFloat(input2.value);
+      imprimirResultado(total);
+    } else if(operacion.value === 'restar'){
+      total = parseFloat(input1.value) - parseFloat(input2.value);
+      imprimirResultado(total);
+    } else if(operacion.value === 'multiplicar'){
+      total = parseFloat(input1.value) * parseFloat(input2.value);
+      imprimirResultado(total);
+    } else if(operacion.value === 'dividir'){
+      total = parseFloat(input1.value) / parseFloat(input2.value);
+      imprimirResultado(total);
+    }
   }
-  //Limpio lo insertado
+  // Limpio lo insertado en loscampos de numeros y de la operacion
   input1.value = '';
   input2.value = '';
   operacion.value = '';
